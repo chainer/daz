@@ -11,25 +11,17 @@ environment:
     # a later point release.
     # See: https://www.appveyor.com/docs/installed-software#python
 
-    - PYTHON: "C:\\Miniconda"
-      PYTHON_VERSION: "2.7.x"
-      PYTHON_ARCH: "32"
+    #- PYTHON: "C:\\Miniconda"
+    #  PYTHON_VERSION: "2.7.x"
+    #  PYTHON_ARCH: "32"
 
     - PYTHON: "C:\\Miniconda-x64"
       PYTHON_VERSION: "2.7.x"
       PYTHON_ARCH: "64"
 
-    - PYTHON: "C:\\Miniconda3"
-      PYTHON_VERSION: "3.4.x"
-      PYTHON_ARCH: "32"
-
-    - PYTHON: "C:\\Miniconda3-x64"
-      PYTHON_VERSION: "3.4.x"
-      PYTHON_ARCH: "64"
-
-    - PYTHON: "C:\\Miniconda35"
-      PYTHON_VERSION: "3.5.x"
-      PYTHON_ARCH: "32"
+    #- PYTHON: "C:\\Miniconda35"
+    #  PYTHON_VERSION: "3.5.x"
+    #  PYTHON_ARCH: "32"
 
     - PYTHON: "C:\\Miniconda35-x64"
       PYTHON_VERSION: "3.5.x"
@@ -54,8 +46,7 @@ install:
   # Check that we have the expected version and architecture for Python
   - "python --version"
   - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
-
-  - "conda install -y -q setuptools"
+  - "conda install -y -q setuptools numpy"
 
 build_script:
   # Build the compiled extension
