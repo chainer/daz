@@ -40,7 +40,7 @@ class TestDaz(unittest.TestCase):
 class TestDazWithNumPy(unittest.TestCase):
 
     def setUp(self):
-        self.scale = 128
+        self.scale = 2
         self.normal = np.full((3,), sys.float_info.min)
         self.denormal = np.full((3,), sys.float_info.min) / self.scale
 
