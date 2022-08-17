@@ -1,5 +1,8 @@
 #include <Python.h>
+
+#if defined(__SSE__)
 #include <xmmintrin.h>
+#endif
 
 static PyObject* set_daz(void)
 {
