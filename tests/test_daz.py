@@ -16,12 +16,16 @@ class TestDaz(unittest.TestCase):
     def check_normal(self):
         assert self.normal == self.denormal * self.scale
         assert self.normal / self.scale == self.denormal
+        assert not daz.get_daz()
+        assert not daz.get_ftz()
 
     def test_normal(self):
         self.check_normal()
 
     def test_daz(self):
         daz.set_daz()
+        assert daz.get_daz()
+        assert not daz.get_ftz()
         assert self.normal / self.scale == 0
         assert self.denormal * self.scale == 0
         assert self.denormal == 0
@@ -30,6 +34,8 @@ class TestDaz(unittest.TestCase):
 
     def test_ftz(self):
         daz.set_ftz()
+        assert daz.get_ftz()
+        assert not daz.get_daz()
         assert self.normal / self.scale == 0
         assert self.denormal * self.scale == self.normal
         assert self.denormal != 0
