@@ -6,52 +6,64 @@
 
 static PyObject* set_daz(void)
 {
+#if defined(__SSE__)
   unsigned int mxcsr = _mm_getcsr();
   mxcsr |= (1<<6);
   _mm_setcsr(mxcsr);
+#endif
   Py_INCREF(Py_None);
   return Py_None;
 }
 
 static PyObject* set_ftz(void)
 {
+#if defined(__SSE__)
   unsigned int mxcsr = _mm_getcsr();
   mxcsr |= (1<<15);
   _mm_setcsr(mxcsr);
+#endif
   Py_INCREF(Py_None);
   return Py_None;
 }
 
 static PyObject* get_daz(void)
 {
+#if defined(__SSE__)
   unsigned int mxcsr = _mm_getcsr();
   if((1<<6)&mxcsr)
     Py_RETURN_TRUE;
+#endif
   Py_RETURN_FALSE;
 }
 
 static PyObject* get_ftz(void)
 {
+#if defined(__SSE__)
   unsigned int mxcsr = _mm_getcsr();
   if((1<<15)&mxcsr)
     Py_RETURN_TRUE;
+#endif
   Py_RETURN_FALSE;
 }
 
 static PyObject* unset_daz(void)
 {
+#if defined(__SSE__)
   unsigned int mxcsr = _mm_getcsr();
   mxcsr &= ~(1<<6);
   _mm_setcsr(mxcsr);
+#endif
   Py_INCREF(Py_None);
   return Py_None;
 }
 
 static PyObject* unset_ftz(void)
 {
+#if defined(__SSE__)
   unsigned int mxcsr = _mm_getcsr();
   mxcsr &= ~(1<<15);
   _mm_setcsr(mxcsr);
+#endif
   Py_INCREF(Py_None);
   return Py_None;
 }
