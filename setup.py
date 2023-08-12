@@ -59,6 +59,7 @@ setuptools.setup(
     packages=[
         'daz',
     ],
+    package_data={"daz": ["py.typed", "daz.pyi"]},
     ext_modules=[setuptools.Extension('daz._core', ['daz/_core.c'])],
     zip_safe=False,
     extras_require=extras_require,
